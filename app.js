@@ -10,14 +10,15 @@
 
 var taskInput=document.getElementById("new-task");//Add a new task.
 var addButton=document.getElementsByTagName("button")[0];//first button
-var incompleteTaskHolder=document.getElementById("incompleteTasks");//ul of #incompleteTasks
-var completedTasksHolder=document.getElementById("completed-tasks");//completed-tasks
+var incompleteTaskHolder=document.getElementById("undone-tasks");//ul of #undone-tasks
+var completedTasksHolder=document.getElementById("done-tasks");//done-tasks
 
 
 //New task list item
 var createNewTaskElement=function(taskString){
 
     var listItem=document.createElement("li");
+    listItem.classList.add("section__item");
 
     //input (checkbox)
     var checkBox=document.createElement("input");//checkbx
@@ -33,18 +34,20 @@ var createNewTaskElement=function(taskString){
     var deleteButtonImg=document.createElement("img");//delete button image
 
     label.innerText=taskString;
-    label.className='task';
+    label.classList.add('item__text', 'item__label');
 
     //Each elements, needs appending
     checkBox.type="checkbox";
+    checkBox.classList.add('item__checkbox', 'input');
     editInput.type="text";
-    editInput.className="task";
+    editInput.classList.add('item__text', 'item__input', 'input');
 
     editButton.innerText="Edit"; //innerText encodes special characters, HTML does not.
-    editButton.className="edit";
+    editButton.classList.add('btn', 'edit');
 
-    deleteButton.className="delete";
+    deleteButton.classList.add('btn', 'delete');
     deleteButtonImg.src='./remove.svg';
+    deleteButtonImg.classList.add('delete__img');
     deleteButton.appendChild(deleteButtonImg);
 
 
